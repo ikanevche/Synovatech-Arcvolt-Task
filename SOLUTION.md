@@ -180,12 +180,9 @@ These were not part of the two marked bugs. I documented them rather than changi
 
 ## 7. With more time
 
-- **Consent:** add a consent banner (CMP) and Google Consent Mode v2, with all storage
-  `denied` by default until the visitor accepts.
-- **Clear ecommerce:** push `{ ecommerce: null }` before each ecommerce event.
-- **Form validation:** only fire `form_submit` for a valid email.
-- **Automated checks:** a small browser test (e.g. Playwright) that clicks each button and
-  checks the data layer, so a typo like `itmes` is caught before release.
-- **Server-side GTM:** send data through a first-party subdomain to reduce data loss from ad
-  blockers and to control what is shared with Google.
-- **BigQuery export:** link GA4 to BigQuery for raw event data and data-quality checks.
+- **Cookie consent:** add a consent banner and Google Consent Mode, so GA4 only tracks
+  visitors after they accept.
+- **Clear old ecommerce data:** push `{ ecommerce: null }` before each add-to-cart and
+  checkout event, so product data from one event can't mix into the next.
+- **Form validation:** only send `form_submit` when the email is valid, so fake sign-ups like
+  `abc` aren't counted.
